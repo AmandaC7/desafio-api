@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import desafio.api.event.RecursoCriadoEvent;
+import desafio.api.model.Produto;
 import desafio.api.model.Venda;
+import desafio.api.repository.ProdutoRepository;
 import desafio.api.repository.VendaRepository;
 import desafio.api.repository.filter.VendaFilter;
 import desafio.api.service.VendaService;
@@ -37,6 +39,9 @@ public class VendaResource {
 
 	@Autowired
 	private VendaRepository vendaRepository;
+
+	@Autowired
+	private ProdutoRepository produtoRepository;
 
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -57,17 +62,15 @@ public class VendaResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Venda> criar(@Valid @RequestBody Venda venda, HttpServletResponse response) {
-	
-		/*
+		
 		for (Produto produto : venda.getProdutos()) {
 			produto = produtoRepository.findById(produto.getId()).orElse(null);
-			if (venda.getFornecedor().getId() != produto.getFornecedor().getId()) {				
+			if (venda.getFornecedor().getId() == produto.getFornecedor().getId()) {
+				publisher.publishEvent(new RecursoCriadoEvent(this, response, venda.getId()));
+			} else {
+				return ResponseEntity.badRequest().body(new Venda());
 			}
-			return ResponseEntity.badRequest().body(new Venda());
-			}*/
-			
-		publisher.publishEvent(new RecursoCriadoEvent(this, response, venda.getId()));
-
+		}
 		Venda vendaSalva = vendaService.salvar(venda);
 		return ResponseEntity.status(HttpStatus.CREATED).body(vendaSalva);
 	}
@@ -107,15 +110,15 @@ public class VendaResource {
 	@ApiImplicitParam(name = "Authorization", value = "Bearer Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
 	@ApiOperation("Lista as vendas pela data em ordem crescente")
 	@GetMapping("/asc")
-	public List<Venda> listAsc(){
+	public List<Venda> listAsc() {
 		return vendaRepository.findAll(Sort.by(Sort.Direction.ASC, "dataCompra"));
 	}
-	
+
 	@ApiImplicitParam(name = "Authorization", value = "Bearer Token", required = true, allowEmptyValue = false, paramType = "header", example = "Bearer access_token")
 	@ApiOperation("Lista as vendas pela data em ordem descrescente")
 	@GetMapping("/desc")
-	public List<Venda> listDesc(){
+	public List<Venda> listDesc() {
 		return vendaRepository.findAll(Sort.by(Sort.Direction.DESC, "dataCompra"));
 	}
-	
+
 }

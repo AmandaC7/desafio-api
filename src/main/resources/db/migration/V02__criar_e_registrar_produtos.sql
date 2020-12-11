@@ -13,22 +13,22 @@ CREATE TABLE produto (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria,imagem, quantidade, Id_fornecedor)
-values("Playstation 4", "#PLAY4",2500, true, 2000, "Games", "play4.jpg", 15,2);
+values("Playstation 4", "#PLAY4",2500, true, 2000, "Games", "play4.jpg", 15,1);
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
-values("DVD", "#DVD",300, false, 0, "Tecnologia","DvdSony.jpg", 12, 2);
+values("DVD", "#DVD",300, false, 0, "Tecnologia","DvdSony.jpg", 12, 1);
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
-values("Playstation 5", "#PLAY5",5300, true, 5200, "Games","Play5.jpg", 170, 2);
+values("Playstation 5", "#PLAY5",5300, true, 5200, "Games","Play5.jpg", 170, 1);
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
-values("Câmera", "#CAMERA",2600, false, 0, "Fotografia","camera-sony.jpg", 52, 2);
+values("Câmera", "#CAMERA",2600, false, 0, "Fotografia","camera-sony.jpg", 52, 1);
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
-values("Xperia", "#XPERIA",2100, true, 1900, "Smartphone","XperiaSony.jpg", 112, 2);
+values("Xperia", "#XPERIA",2100, true, 1900, "Smartphone","XperiaSony.jpg", 112, 1);
 
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
-values("XBOX ONE", "#XBOX1",2300, true, 1900, "Games","XboxOne.jpg", 159, 1);
+values("XBOX ONE", "#XBOX1",2300, true, 1900, "Games","XboxOne.jpg", 159, 2);
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
-values("XBOX X", "#XBOXX",5000, true, 4900, "Games","XboxX.jpg", 123, 1);
+values("XBOX X", "#XBOXX",5000, true, 4900, "Games","XboxX.jpg", 123, 2);
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
-values("Notebook Surface", "#SURFACE",4300, true, 4000, "Notebook","NoteSurfaceMicrosoft.jpg", 12, 1);
+values("Notebook Surface", "#SURFACE",4300, true, 4000, "Notebook","NoteSurfaceMicrosoft.jpg", 12,2);
 
 INSERT INTO produto (nome, codigo_produto, valor, promocao, valor_promocao, categoria, imagem,quantidade, Id_fornecedor)
 values("Iphone 12", "#IPHONE12",9300, true, 9200, "Smartphone","iphone-12.jpg", 230, 3);
